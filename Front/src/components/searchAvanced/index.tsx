@@ -3,7 +3,27 @@ import { useEffect, useState } from "react";
 import { Button } from "../button";
 import { Search } from "lucide-react";
 
-export function SearchAvanced() {
+interface SearchAvancedProps {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+  selectedCategory: "all" | "car" | "motorcycle";
+  setSelectedCategory: (value: "all" | "car" | "motorcycle") => void;
+  selectedBrand: string;
+  setSelectedBrand: (value: string) => void;
+  priceRange: "all" | "under-20k" | "20k-40k" | "over-40k";
+  setPriceRange: (value: "all" | "under-20k" | "20k-40k" | "over-40k") => void;
+}
+
+export function SearchAvanced({
+  searchTerm,
+  setSearchTerm,
+  selectedCategory,
+  setSelectedCategory,
+  selectedBrand,
+  setSelectedBrand,
+  priceRange,
+  setPriceRange
+}: SearchAvancedProps) {
     const [ categoria, setIsCategoria ] = useState(false)
     const [ marcas, setIsmarcas ] = useState(false)
     const [ precos, setIsprecos ] = useState(false)
@@ -29,21 +49,12 @@ export function SearchAvanced() {
         setIsprecos(type === "precos" ? !precos : false);
     }
 
-    /* 
-    const filteredVehicles = vehicles.filter((vehicle) => {
-        const matchesSearch = vehicle.title.toLowerCase().includes(searchTerm.toLowerCase())
-        const matchesCategory = selectedCategory === "all" || vehicle.category === selectedCategory
-        const matchesBrand = selectedBrand === "all" || vehicle.brand === selectedBrand
-        const matchesPrice =
-        priceRange === "all" ||
-        (priceRange === "under-20k" && vehicle.price < 20000) ||
-        (priceRange === "20k-40k" && vehicle.price >= 20000 && vehicle.price <= 40000) ||
-        (priceRange === "over-40k" && vehicle.price > 40000)
-
-        return matchesSearch && matchesCategory && matchesBrand && matchesPrice
-    })
-    */ 
-
+    const resetFilters = () => {
+        setSearchTerm("");
+        setSelectedCategory("all");
+        setSelectedBrand("all");
+        setPriceRange("all");
+    };
 
     return (
         <section className="w-full pt-7 px-4 pb-8 bg-white/85 shadow-md shadow-black/20">
@@ -53,12 +64,14 @@ export function SearchAvanced() {
                     <input 
                         type="text"
                         placeholder="Pesquisar Veículos..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full pl-10 pr-4 py-2 border-1 border-black/30 rounded-lg focus:border-black/70 focus:outline-none" 
                     />
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60 w-5 h-5" />
                 </div>
 
-                <button className="md:hidden mt-5 bg-zinc-200 px-4 py-2 rounded-lg border-1 border-zinc-300/40 font-medium cursor-pointer" onClick={() => setIsFiltro(!isFiltro)}>
+                <button className="lg:hidden mt-5 bg-zinc-200 px-4 py-2 rounded-lg border-1 border-zinc-300/40 font-medium cursor-pointer" onClick={() => setIsFiltro(!isFiltro)}>
                     Filtros
                 </button>
 
@@ -88,7 +101,8 @@ export function SearchAvanced() {
                                     onClick={() => toggleMenu("categoria")}
                                 >
                                     <p className="block px-3 py-2 text-black">
-                                        Todas Categorias
+                                        {selectedCategory === "all" ? "Todas Categorias" : 
+                                         selectedCategory === "car" ? "Carros" : "Motos"}
                                     </p>
 
                                     <motion.button
@@ -120,14 +134,33 @@ export function SearchAvanced() {
                                         className="absolute top-full mt-2 left-0 z-50 w-full flex flex-col bg-white rounded-lg border-1 border-black/30 shadow-md"
                                         >
                                         <ul className="w-full p-2">
-                                            {["Moto", "Carro", "Caminhão"].map((item, index) => (
-                                                <li
-                                                    key={index}
-                                                    className="py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90"
-                                                >
-                                                    {item}
-                                                </li>
-                                            ))}
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "all" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setSelectedCategory("all");
+                                                    setIsCategoria(false);
+                                                }}
+                                            >
+                                                Todas Categorias
+                                            </li>
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "car" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setSelectedCategory("car");
+                                                    setIsCategoria(false);
+                                                }}
+                                            >
+                                                Carros
+                                            </li>
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "motorcycle" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setSelectedCategory("motorcycle");
+                                                    setIsCategoria(false);
+                                                }}
+                                            >
+                                                Motos
+                                            </li>
                                         </ul>
                                     </motion.div>
                                     )}
@@ -141,7 +174,7 @@ export function SearchAvanced() {
                                     onClick={() => toggleMenu("marcas")}
                                 >
                                     <p className="block px-3 py-2 text-black">
-                                        Todas Marcas
+                                        {selectedBrand === "all" ? "Todas Marcas" : selectedBrand}
                                     </p>
 
                                     <motion.button
@@ -173,12 +206,25 @@ export function SearchAvanced() {
                                         className="absolute top-full mt-2 left-0 z-50 w-full flex flex-col bg-white rounded-lg border-1 border-black/30 shadow-md"
                                         >
                                         <ul className="w-full p-2">
-                                            {["Moto", "Carro", "Caminhão"].map((item, index) => (
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedBrand === "all" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setSelectedBrand("all");
+                                                    setIsmarcas(false);
+                                                }}
+                                            >
+                                                Todas Marcas
+                                            </li>
+                                            {["Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Mercedes", "Audi", "Volkswagen"].map((brand) => (
                                                 <li
-                                                    key={index}
-                                                    className="py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90"
+                                                    key={brand}
+                                                    className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedBrand === brand ? "bg-zinc-200" : ""}`}
+                                                    onClick={() => {
+                                                        setSelectedBrand(brand);
+                                                        setIsmarcas(false);
+                                                    }}
                                                 >
-                                                    {item}
+                                                    {brand}
                                                 </li>
                                             ))}
                                         </ul>
@@ -187,7 +233,6 @@ export function SearchAvanced() {
                                 </AnimatePresence>
                             </div>
 
-
                             <div className="w-full relative">
                                 <Button
                                     size={"lg"}
@@ -195,7 +240,9 @@ export function SearchAvanced() {
                                     onClick={() => toggleMenu("precos")}
                                 >
                                     <p className="block px-3 py-2 text-black">
-                                        Todos Preços
+                                        {priceRange === "all" ? "Todos Preços" : 
+                                         priceRange === "under-20k" ? "Abaixo de $20k" :
+                                         priceRange === "20k-40k" ? "$20k - $40k" : "Acima de $40k"}
                                     </p>
 
                                     <motion.button
@@ -227,21 +274,53 @@ export function SearchAvanced() {
                                         className="absolute top-full mt-2 left-0 z-50 w-full flex flex-col bg-white rounded-lg border-1 border-black/30 shadow-md"
                                         >
                                         <ul className="w-full p-2">
-                                            {["Moto", "Carro", "Caminhão"].map((item, index) => (
-                                                <li
-                                                    key={index}
-                                                    className="py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90"
-                                                >
-                                                    {item}
-                                                </li>
-                                            ))}
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "all" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setPriceRange("all");
+                                                    setIsprecos(false);
+                                                }}
+                                            >
+                                                Todos Preços
+                                            </li>
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "under-20k" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setPriceRange("under-20k");
+                                                    setIsprecos(false);
+                                                }}
+                                            >
+                                                Abaixo de $20k
+                                            </li>
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "20k-40k" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setPriceRange("20k-40k");
+                                                    setIsprecos(false);
+                                                }}
+                                            >
+                                                $20k - $40k
+                                            </li>
+                                            <li
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "over-40k" ? "bg-zinc-200" : ""}`}
+                                                onClick={() => {
+                                                    setPriceRange("over-40k");
+                                                    setIsprecos(false);
+                                                }}
+                                            >
+                                                Acima de $40k
+                                            </li>
                                         </ul>
                                     </motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
 
-                            <Button size={"lg"} className="w-full flex items-center justify-center py-2.5 cursor-pointer border-1 border-black/20 rounded-lg">
+                            <Button 
+                                size={"lg"} 
+                                className="w-full flex items-center justify-center py-2.5 cursor-pointer border-1 border-black/20 rounded-lg"
+                                onClick={resetFilters}
+                            >
                                 Limpar Filtros
                             </Button>
                         </motion.div>
