@@ -78,4 +78,21 @@ export class VeiculoController {
         })
     }
   }
+
+  static async removeVeiculo(req: Request, res: Response) {
+    try {
+        const { id } = req.params;
+        await VeiculoService.removeVeiculo(Number(id))
+
+        res.status(200).json({
+            data: "Deletado com sucesso!",
+            error: null
+        })        
+    } catch (error: any) {
+        res.status(400).json({
+            data: null,
+            error: error.message
+        })
+    }
+  }
 }

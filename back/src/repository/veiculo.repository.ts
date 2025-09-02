@@ -66,4 +66,11 @@ export class VeiculoRepository {
 
     return result.rows[0] || null; 
   }
+
+  static async removeVeiculo(id: number){
+    const query = `DELETE FROM veiculos WHERE id = ${id}`
+    const result = await pool.query(query)
+
+    return result.rows;
+  }
 }

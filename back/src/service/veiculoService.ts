@@ -92,4 +92,14 @@ export class VeiculoService {
 
     return veiculo;
   }
+
+  static async removeVeiculo(id: number) {
+    if (!id || !Number.isInteger(id) || id <= 0) {
+      throw new Error("Id inválido!");
+    }
+
+    const veiculo = await VeiculoRepository.removeVeiculo(id);
+    
+    return  veiculo
+  }
 }
