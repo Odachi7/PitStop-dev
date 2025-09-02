@@ -1,9 +1,8 @@
 import { useContext, useState } from "react"
-import { Usercontext } from "../../context/user"
+import { Usercontext } from "../../context/userContext"
 import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion";
 import { Car, Jeep } from "phosphor-react";
-
 
 export function HeaderMobile() {
     const { isMenuOpen, setIsMenuOpen } = useContext(Usercontext)

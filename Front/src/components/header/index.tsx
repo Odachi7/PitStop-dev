@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
-import { Usercontext } from "../../context/user"
+import { Usercontext } from "../../context/userContext"
 import { AnimatePresence, motion } from "framer-motion"
 
 import { HeaderMobile } from "../headerMobile"
