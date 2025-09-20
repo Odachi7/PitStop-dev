@@ -3,7 +3,7 @@ import { Layout } from "./components/layout";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
-import { CarDatail } from "./pages/car";
+import { VehicleDetailPage } from "./pages/car";
 import { DashBoard } from "./pages/dashboard";
 import { SellCar } from "./pages/sellCar";
 import { Assinar } from "./pages/assinaturas";
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
      },
      {
       path: "/vehicle/:id", 
-      element: <CarDatail />
+      element: <VehicleDetailPage />
      },
      {
       path: "/dashboard", 

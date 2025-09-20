@@ -1,14 +1,9 @@
-import { useNavigate } from "react-router-dom"
 
+interface HomeInitialSectionProps {
+  onViewCatalog: () => void;
+}
 
-export function HomeInitialSection() {
-    const navigate = useNavigate()
-
-
-    function handleClick() {
-        navigate("/catalogo")
-    }
-
+export function HomeInitialSection({onViewCatalog}: HomeInitialSectionProps) {
 
     return (
          <section className="relative bg-[url('/src/assets/PapelParedeHome.jpeg')] bg-cover bg-center h-[460px] min-lg:h-screen">
@@ -24,7 +19,7 @@ export function HomeInitialSection() {
                 </p>
 
                 <button
-                    onClick={() => handleClick()}
+                    onClick={onViewCatalog}
                     className="mt-10 lg:mt-12 mb-10 text-white text-lg lg:text-3xl border-1 shadow px-4 py-1 rounded-md font-bold cursor-pointer select-none
                     hover:bg-white hover:text-black duration-300"
                 >

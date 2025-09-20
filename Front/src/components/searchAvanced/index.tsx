@@ -6,12 +6,12 @@ import { Search } from "lucide-react";
 interface SearchAvancedProps {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
-  selectedCategory: "all" | "car" | "motorcycle";
-  setSelectedCategory: (value: "all" | "car" | "motorcycle") => void;
+  selectedCategory: "all" | "Carro" | "Moto";
+  setSelectedCategory: (value: "all" | "Carro" | "Moto") => void;
   selectedBrand: string;
   setSelectedBrand: (value: string) => void;
-  priceRange: "all" | "under-20k" | "20k-40k" | "over-40k";
-  setPriceRange: (value: "all" | "under-20k" | "20k-40k" | "over-40k") => void;
+  priceRange: "all" | "Menos de 20k" | "20k-40k" | "Mais de 40k";
+  setPriceRange: (value: "all" | "Menos de 20k" | "20k-40k" | "Mais de 40k") => void;
 }
 
 export function SearchAvanced({
@@ -102,7 +102,7 @@ export function SearchAvanced({
                                 >
                                     <p className="block px-3 py-2 text-black">
                                         {selectedCategory === "all" ? "Todas Categorias" : 
-                                         selectedCategory === "car" ? "Carros" : "Motos"}
+                                         selectedCategory === "Carro" ? "Carros" : "Motos"}
                                     </p>
 
                                     <motion.button
@@ -144,18 +144,18 @@ export function SearchAvanced({
                                                 Todas Categorias
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "car" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Carro" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
-                                                    setSelectedCategory("car");
+                                                    setSelectedCategory("Carro");
                                                     setIsCategoria(false);
                                                 }}
                                             >
                                                 Carros
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "motorcycle" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Moto" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
-                                                    setSelectedCategory("motorcycle");
+                                                    setSelectedCategory("Moto");
                                                     setIsCategoria(false);
                                                 }}
                                             >
@@ -241,7 +241,7 @@ export function SearchAvanced({
                                 >
                                     <p className="block px-3 py-2 text-black">
                                         {priceRange === "all" ? "Todos Preços" : 
-                                         priceRange === "under-20k" ? "Abaixo de $20k" :
+                                         priceRange === "Menos de 20k" ? "Abaixo de $20k" :
                                          priceRange === "20k-40k" ? "$20k - $40k" : "Acima de $40k"}
                                     </p>
 
@@ -284,9 +284,9 @@ export function SearchAvanced({
                                                 Todos Preços
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "under-20k" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Menos de 20k" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
-                                                    setPriceRange("under-20k");
+                                                    setPriceRange("Menos de 20k");
                                                     setIsprecos(false);
                                                 }}
                                             >
@@ -302,9 +302,9 @@ export function SearchAvanced({
                                                 $20k - $40k
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "over-40k" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Mais de 40k" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
-                                                    setPriceRange("over-40k");
+                                                    setPriceRange("Mais de 40k");
                                                     setIsprecos(false);
                                                 }}
                                             >

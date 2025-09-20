@@ -3,13 +3,15 @@ import { SearchAvanced } from "../../components/searchAvanced";
 import { Card, CardContent } from "../../components/card";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/button";
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState, useMemo, useEffect, useRef } from "react";
 import { Usercontext } from "../../context/userContext";
+import { Pagination } from "../../components/pagination"; // Componente que vamos criar
+import Footer from "../../components/footer";
 
 type Vehicle = {
   id: number;
   title: string;
-  category: "car" | "motorcycle";
+  category: "Carro" | "Moto";
   brand: string;
   price: number;
   mileage?: string;
@@ -21,18 +23,35 @@ type Vehicle = {
 
 export function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<"all" | "car" | "motorcycle">("all");
+  const [selectedCategory, setSelectedCategory] = useState<"all" | "Carro" | "Moto">("all");
   const [selectedBrand, setSelectedBrand] = useState("all");
-  const [priceRange, setPriceRange] = useState<"all" | "under-20k" | "20k-40k" | "over-40k">("all");
+  const [priceRange, setPriceRange] = useState<"all" | "Menos de 20k" | "20k-40k" | "Mais de 40k">("all");
+  const filtersRef = useRef<HTMLDivElement>(null);
 
-  const { veiculos, loading, error } = useContext(Usercontext) as {
+  const { 
+    veiculos, 
+    loading, 
+    error, 
+    formatarReal, 
+    formatKilometers,
+    currentPage,
+    setCurrentPage,
+    itemsPerPage,
+    getPaginatedData
+  } = useContext(Usercontext) as {
     veiculos: Vehicle[];
     loading: boolean;
     error: string | null;
+    formatarReal: (value: number) => string;
+    formatKilometers: (km: number) => string;
+    currentPage: number;
+    setCurrentPage: (page: number) => void;
+    itemsPerPage: number;
+    getPaginatedData: <T>(data: T[], page: number, itemsPerPage: number) => any;
   };
 
+  // Primeiro filtra os veículos
   const filteredVehicles = useMemo(() => {
-    // Verificar se veiculos é um array antes de usar filter
     if (!Array.isArray(veiculos)) {
       return [];
     }
@@ -43,19 +62,30 @@ export function Home() {
       const matchesBrand = selectedBrand === "all" || vehicle.brand === selectedBrand;
       const matchesPrice =
         priceRange === "all" ||
-        (priceRange === "under-20k" && vehicle.price < 20000) ||
+        (priceRange === "Menos de 20k" && vehicle.price < 20000) ||
         (priceRange === "20k-40k" && vehicle.price >= 20000 && vehicle.price <= 40000) ||
-        (priceRange === "over-40k" && vehicle.price > 40000);
+        (priceRange === "Mais de 40k" && vehicle.price > 40000);
 
       return matchesSearch && matchesCategory && matchesBrand && matchesPrice;
     });
   }, [veiculos, searchTerm, selectedCategory, selectedBrand, priceRange]);
+
+  // Depois aplica a paginação nos veículos filtrados
+  const paginatedData = useMemo(() => {
+    return getPaginatedData(filteredVehicles, currentPage, itemsPerPage);
+  }, [filteredVehicles, currentPage, itemsPerPage, getPaginatedData]);
+
+  // Reset para primeira página quando filtros mudarem
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategory, selectedBrand, priceRange, setCurrentPage]);
 
   const resetFilters = () => {
     setSearchTerm("");
     setSelectedCategory("all");
     setSelectedBrand("all");
     setPriceRange("all");
+    setCurrentPage(1);
   };
 
   if (loading) return <p className="text-center py-12">Carregando veículos...</p>;
@@ -72,83 +102,113 @@ export function Home() {
     </div>
   );
 
+  // Função para scroll até os filtros
+  const scrollToFilters = () => {
+    filtersRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
   return (
     <section className="w-full">
-      <HomeInitialSection />
-
-      <SearchAvanced
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        selectedBrand={selectedBrand}
-        setSelectedBrand={setSelectedBrand}
-        priceRange={priceRange}
-        setPriceRange={setPriceRange}
+      <HomeInitialSection 
+        onViewCatalog={scrollToFilters}
       />
+
+      <div ref={filtersRef}>
+        <SearchAvanced
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedBrand={selectedBrand}
+          setSelectedBrand={setSelectedBrand}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+        />
+      </div>
 
       <div className="w-full max-w-[1400px] mx-auto">
         <section className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">
-                {filteredVehicles.length} Vehicles Available
+              {paginatedData.totalItems} Veículos Disponíveis
             </h2>
+            <p className="text-gray-600">
+              Página {paginatedData.currentPage} de {paginatedData.totalPages}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 cursor-pointer">
-            {filteredVehicles.map((vehicle) => (
+            {paginatedData.items.map((vehicle: Vehicle) => (
               <Card key={vehicle.id} className="group hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative">
-                        <img
-                            src={vehicle.image || "/placeholder.svg"}
-                            alt={vehicle.title}
-                            loading="lazy"
-                            className="w-full h-48 object-cover rounded-t-lg"
-                        />
-                    </div>
+                <div className="relative">
+                  <img
+                    src={vehicle.image || "/placeholder.svg"}
+                    alt={vehicle.title}
+                    loading="lazy"
+                    className="w-full h-50 object-cover rounded-t-lg"
+                  />
+                </div>
 
-                    <CardContent className="p-4">
-                        <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">
-                            {vehicle.title}
-                        </h3>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">
+                    {vehicle.title}
+                  </h3>
 
-                        <p className="text-2xl font-bold text-blue-900 mb-2">
-                            ${vehicle.price.toLocaleString()}
-                        </p>
+                  <p className="text-2xl font-bold text-blue-900 mb-2">
+                    {formatarReal(vehicle.price)}
+                  </p>
 
-                        <div className="text-sm text-gray-600 mb-3 space-y-1">
-                            <p>
-                            {vehicle.mileage} • {vehicle.transmission} • {vehicle.fuel}
-                            </p>
+                  <div className="text-sm text-gray-600 mb-3 space-y-1">
+                    <p>
+                      {formatKilometers(Number(vehicle.mileage))} km • {vehicle.transmission} • {vehicle.fuel}
+                    </p>
 
-                            <p className="text-gray-500">
-                                {vehicle.location}
-                            </p>
-                        </div>
+                    <p className="text-gray-500">
+                      {vehicle.location}
+                    </p>
+                  </div>
 
-                        <Link to={`/vehicle/${vehicle.id}`}>
-                            <Button className="w-full text-white bg-blue-900 hover:bg-blue-800 cursor-pointer">
-                                Ver detalhes
-                            </Button>
-                        </Link>
-                    </CardContent>
+                  <Link to={`/vehicle/${vehicle.id}`}>
+                    <Button className="w-full text-white bg-blue-900 cursor-pointer group-hover:bg-blue-800">
+                      Ver detalhes
+                    </Button>
+                  </Link>
+                </CardContent>
               </Card>
             ))}
           </div>
 
+          {/* Componente de Paginação - só exibe se tiver mais de 1 página */}
+          {paginatedData.totalPages > 1 && (
+            <Pagination
+              currentPage={paginatedData.currentPage}
+              totalPages={paginatedData.totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+
           {filteredVehicles.length === 0 && (
             <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">
-                    Nenhum veículo encontrado em nosso sistema!
-                </p>
+              <p className="text-gray-900 text-lg mb-5 md:text-xl lg:text-2xl xl:text-3xl">
+                Nenhum veículo encontrado em nosso sistema!
+              </p>
 
-                <Button variant="outline" className="mt-4 bg-transparent" onClick={resetFilters}>
-                    Clear All Filters
-                </Button>
+              <Button 
+                variant="outline" 
+                className="mt-4 text-lg lg:text-xl bg-transparent border border-black text-black cursor-pointer hover:bg-black hover:text-white duration-200" 
+                onClick={resetFilters}
+              >
+                Remover Filtros
+              </Button>
             </div>
           )}
         </section>
       </div>
+      
+      <Footer/>
     </section>
   );
 }

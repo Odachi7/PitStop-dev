@@ -7,7 +7,7 @@ export function NotFound() {
     return (
         <section>
             <div className="w-full flex flex-col items-center mt-50">
-                <h1 className="text-8xl text-blue-900 font-bold">
+                <h1 className="text-8xl text-blue-900 font-bold flex items-start">
                     404
                 </h1>
 
