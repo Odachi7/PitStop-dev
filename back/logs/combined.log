@@ -1,0 +1,157 @@
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T03:08:45.958Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T03:08:45.961Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T03:11:56.670Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T03:11:56.674Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T03:12:12.204Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T03:12:12.209Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T03:22:47.744Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T03:22:47.749Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T03:34:59.334Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T03:34:59.340Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T03:35:04.543Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T03:35:04.547Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T03:48:13.690Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T03:48:13.692Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T03:58:05.194Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T03:58:05.197Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:08:28.087Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:08:28.091Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:17:16.633Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:17:16.637Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:17:25.450Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:17:25.454Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:17:34.872Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:17:34.876Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:17:46.607Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:17:46.612Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:17:59.310Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:17:59.314Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:11.780Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:11.784Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:18.853Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:18.857Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:26.272Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:26.278Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:36.873Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:36.877Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:45.791Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:45.795Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:18:59.189Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:18:59.193Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:19:14.669Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:19:14.674Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:21:21.814Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:21:21.818Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T04:44:23.815Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T04:44:23.819Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:09:50.323Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:09:50.327Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T05:10:49.939Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T05:10:49.942Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:12:12.518Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:12:12.521Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:18:04.757Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:18:04.761Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T05:18:40.130Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T05:18:40.132Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:19:12.852Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:19:12.856Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T05:19:50.058Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T05:19:50.061Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:22:21.190Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:22:21.194Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:26:27.734Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:26:27.738Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:31:27.706Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:31:27.710Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:45:36.384Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:45:36.389Z"}
+{"error":"Bad control character in string literal in JSON at position 6093","ip":"::ffff:127.0.0.1","level":"error","message":"Erro na aplicação:","method":"POST","service":"pitstop-api","stack":"SyntaxError: Bad control character in string literal in JSON at position 6093\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\Odachi Urek\\Desktop\\Projetos\\PitStop\\back\\node_modules\\body-parser\\lib\\types\\json.js:92:19)\n    at C:\\Users\\Odachi Urek\\Desktop\\Projetos\\PitStop\\back\\node_modules\\body-parser\\lib\\read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\n    at invokeCallback (C:\\Users\\Odachi Urek\\Desktop\\Projetos\\PitStop\\back\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\Odachi Urek\\Desktop\\Projetos\\PitStop\\back\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\Odachi Urek\\Desktop\\Projetos\\PitStop\\back\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:524:28)\n    at endReadableNT (node:internal/streams/readable:1698:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2025-09-29T05:51:53.848Z","url":"/api/vehicles-multi"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T05:54:15.434Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T05:54:15.438Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T06:01:49.126Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T06:01:49.130Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T06:02:18.857Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T06:02:18.861Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T06:02:28.799Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T06:02:28.803Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-29T06:02:34.713Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-29T06:02:34.717Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T06:02:57.211Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T06:02:57.213Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T06:03:36.528Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T06:03:36.531Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T06:04:06.097Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T06:04:06.100Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-29T06:11:14.584Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-29T06:11:14.587Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:12:57.143Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:12:57.146Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:42.315Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:42.318Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:46.955Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:46.958Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:48.763Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:48.765Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:51.982Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:51.985Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:56.008Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:56.011Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:34:58.849Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:34:58.852Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:35:07.726Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:35:07.729Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:35:33.248Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:35:33.251Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:35:38.080Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:35:38.083Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:22.693Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:22.696Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:27.427Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:27.430Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:31.065Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:31.068Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:32.848Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:32.851Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:46.279Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:46.282Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:48.435Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:48.439Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:36:50.775Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:36:50.779Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:37:59.482Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:37:59.485Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:38:07.198Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:38:07.201Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T01:38:20.646Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T01:38:20.649Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:05:05.159Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:05:05.162Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:07:03.910Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:07:03.913Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:07:07.280Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:07:07.283Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:07:13.043Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:07:13.047Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:07:21.842Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:07:21.845Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:08:37.847Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:08:37.849Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:11:28.483Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:11:28.486Z"}
+{"level":"warn","message":"❌ Porta 3333 está em uso. Tentando porta 3334...","service":"pitstop-api","timestamp":"2025-09-30T02:11:41.928Z"}
+{"level":"info","message":"�� Servidor rodando na porta 3334","service":"pitstop-api","timestamp":"2025-09-30T02:11:41.933Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-09-30T02:37:58.218Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-09-30T02:37:58.221Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-25T00:53:58.100Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-25T00:53:58.103Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-26T01:12:34.733Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-26T01:12:34.736Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-26T01:12:38.335Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-26T01:12:38.338Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-26T23:34:23.475Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-26T23:34:23.478Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-26T23:34:27.853Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-26T23:34:27.856Z"}
+{"level":"info","message":"🚀 Servidor rodando na porta 3333","service":"pitstop-api","timestamp":"2025-10-27T02:53:15.737Z"}
+{"level":"info","message":"📱 API disponível em: http://localhost:3333/api","service":"pitstop-api","timestamp":"2025-10-27T02:53:15.740Z"}

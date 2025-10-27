@@ -1,39 +1,48 @@
-import type { Request, Response } from "express";
-import express from "express";
-import cors from "cors";
-import "express-async-errors";
-import { router } from "./routes.js";
+// src/server.ts
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import 'express-async-errors';
+import 'reflect-metadata';
+
+import { router } from './presentation/routes';
+import { errorHandler } from './presentation/middleware/errorHandler';
+import { logger } from './shared/utils/logger';
 
 const app = express();
-app.use(express.json());
+
+app.use(helmet());
 app.use(cors());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(router)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Muitas requisições deste IP, tente novamente em 15 minutos.'
+});
+app.use(limiter);
 
-app.use((err: Error, req: Request, res: Response) => {
-    if( err instanceof Error ) {
-        return res.status(400).json({
-            error: err.message
-        })
-    }
+app.use('/api', router);
 
-    res.status(500).json({
-        status: "Error",
-        massage: "Internal Server Error"
-    })
-})
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  logger.info(`🚀 Servidor rodando na porta ${PORT}`);
+  logger.info(`📱 API disponível em: http://localhost:${PORT}/api`);
 }).on('error', (err: any) => {
-    if (err.code === 'EADDRINUSE') {
-        console.log(`❌ Porta ${PORT} está em uso. Tentando porta ${Number(PORT) + 1}...`);
-        app.listen(Number(PORT) + 1, () => {
-            console.log(`🚀 Servidor rodando na porta ${Number(PORT) + 1}`);
-        });
-    } else {
-        console.error('❌ Erro ao iniciar servidor:', err);
-    }
+  if (err.code === 'EADDRINUSE') {
+    logger.warn(`❌ Porta ${PORT} está em uso. Tentando porta ${Number(PORT) + 1}...`);
+    app.listen(Number(PORT) + 1, () => {
+      logger.info(`�� Servidor rodando na porta ${Number(PORT) + 1}`);
+    });
+  } else {
+    logger.error('❌ Erro ao iniciar servidor:', err);
+  }
 });

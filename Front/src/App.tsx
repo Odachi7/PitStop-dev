@@ -3,13 +3,14 @@ import { Layout } from "./components/layout";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
-import { CarDatail } from "./pages/car";
+import { VehicleDetailPage } from "./pages/VehicleDetailPage";
 import { DashBoard } from "./pages/dashboard";
-import { SellCar } from "./pages/sellCar";
+import { SellVeicle } from "./pages/SellVeicle";
 import { Assinar } from "./pages/assinaturas";
-import { SellMotorcycle } from "./pages/sellMotorcycle";
 import { Catalogo } from "./pages/catalogo";
 import { NotFound } from "./pages/notFound";
+import { InformacoesEmpresa } from "./pages/InformacoesEmpresa"
+import { DicasDeSeguranca } from "./pages/dicasSeguranca";
 
 
 const router = createBrowserRouter([
@@ -22,19 +23,15 @@ const router = createBrowserRouter([
      },
      {
       path: "/vehicle/:id", 
-      element: <CarDatail />
+      element: <VehicleDetailPage />
      },
      {
       path: "/dashboard", 
       element: <DashBoard />
      }, 
      { 
-      path: "/vender-carro",
-      element: <SellCar />
-     },
-     {
-      path: "/vender-moto",
-      element: <SellMotorcycle />
+      path: "/vender",
+      element: <SellVeicle />
      },
      {
       path: "/assinar",
@@ -43,6 +40,14 @@ const router = createBrowserRouter([
      {
       path: "/catalogo",
       element: <Catalogo />
+     },
+     {
+      path: "/imformacoesEmpresa",
+      element: <InformacoesEmpresa />
+     },
+     {
+      path: "dicas",
+      element:<DicasDeSeguranca />
      },
      {
       path: "*",

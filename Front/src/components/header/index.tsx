@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Usercontext } from "../../context/userContext"
 import { AnimatePresence, motion } from "framer-motion"
+import { apiService } from "../../lib/api"
 
 import { HeaderMobile } from "../headerMobile"
-import { UserCircle } from "phosphor-react"
+import { UserCircle, SignOut } from "phosphor-react"
 
 export function Header() {
-    const { menu, isMenuOpen } = useContext(Usercontext)
+    const { menu, isMenuOpen, reloadVehicles } = useContext(Usercontext)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+        const token = localStorage.getItem('auth_token')
+        setIsLoggedIn(!!token)
+    }, [])
+
+    const handleLogout = () => {
+        apiService.logout()
+        setIsLoggedIn(false)
+        reloadVehicles()
+    }
 
     return (
         <header className="bg-white shadow-sm border-b border-zinc-300 sticky top-0 z-50">
@@ -22,11 +35,11 @@ export function Header() {
                         </Link>
 
                         <div className="hidden lg:flex items-center space-x-4">
-                            <Link to={"/login"} className="text-md text-blue-900 font-medium cursor-pointer p-2 hover:text-blue-950 hover:rotate-2 duration-100 transition-all">
+                            <Link to={"/catalogo"} className="text-md text-blue-900 font-medium cursor-pointer p-2 hover:text-blue-950 hover:rotate-2 duration-100 transition-all">
                                 Comprar
                             </Link>
 
-                            <Link to={"/vender"} className="text-md text-blue-900 font-medium cursor-pointer p-2 hover:text-blue-950 hover:rotate-2 duration-100 transition-all">
+                            <Link to={"/vender-carro"} className="text-md text-blue-900 font-medium cursor-pointer p-2 hover:text-blue-950 hover:rotate-2 duration-100 transition-all">
                                 Vender
                             </Link>
                              
@@ -41,16 +54,28 @@ export function Header() {
                         </div>
 
                         
-                        <Link to={"/login"} className="hidden lg:flex items-center justify-center gap-1 border-l border-blue-900/40 h-17 pl-3">
-                            <span className="text-blue-900"><UserCircle size={28} /></span>
-                            
-                            <p  className="text-blue-900">
-                                Entrar
-                            </p>
-                        </Link>
+                        {isLoggedIn ? (
+                            <div className="hidden lg:flex items-center gap-3 border-l border-blue-900/40 h-17 pl-3">
+                                <Link to={"/catalogo"} className="text-md text-blue-900 font-medium cursor-pointer p-2 hover:text-blue-950 hover:rotate-2 duration-100 transition-all">
+                                    Catálogo
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="flex items-center justify-center gap-1 text-blue-900 hover:text-blue-950 transition-colors"
+                                >
+                                    <SignOut size={20} />
+                                    <span className="text-sm">Sair</span>
+                                </button>
+                            </div>
+                        ) : (
+                            <Link to={"/login"} className="hidden lg:flex items-center justify-center gap-1 border-l border-blue-900/40 h-17 pl-3">
+                                <span className="text-blue-900"><UserCircle size={28} /></span>
+                                <p className="text-blue-900">
+                                    Entrar
+                                </p>
+                            </Link>
+                        )}
                 
-
-                        {/* Button Mobile */}
                         <motion.button
                             animate={{ rotate: isMenuOpen ? 180 : -180 }}
                             transition={{duration: 0.4}}
