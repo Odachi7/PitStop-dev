@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS clientes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     email VARCHAR(255) UNIQUE NOT NULL,
-    senha_hash VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL, -- Senha em texto plano
     primeiro_nome VARCHAR(100) NOT NULL,
     ultimo_nome VARCHAR(100) NOT NULL,
     celular VARCHAR(20),
@@ -22,6 +22,6 @@ CREATE TABLE IF NOT EXISTS clientes (
 );
 
 -- Índices para performance
-CREATE INDEX idx_clients_email ON clientes(email);
-CREATE INDEX idx_clients_is_seller ON clientes(vendedor);
-CREATE INDEX idx_clients_is_active ON clientes(ativo);
+CREATE INDEX IF NOT EXISTS idx_clients_email ON clientes(email);
+CREATE INDEX IF NOT EXISTS idx_clients_is_seller ON clientes(vendedor);
+CREATE INDEX IF NOT EXISTS idx_clients_is_active ON clientes(ativo);

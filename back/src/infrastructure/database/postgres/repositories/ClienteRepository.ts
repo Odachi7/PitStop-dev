@@ -6,7 +6,7 @@ export class ClientRepository {
   constructor(private pool: Pool) {}
 
   async encotrarPorEmail(email: string): Promise<Client | null> {
-    const query = 'SELECT * FROM clients WHERE email = $1';
+    const query = 'SELECT * FROM clientes WHERE email = $1';
     const result = await this.pool.query(query, [email]);
     
     if (result.rows.length === 0) {
@@ -16,10 +16,21 @@ export class ClientRepository {
     return this.mapToEntity(result.rows[0]);
   }
 
+  public async getClientId(id: number) { 
+    const query  = `SELECT * FROM clientes WHERE id = ${id}`
+    const result  = await this.pool.query(query)
+
+    if(result.rows.length === 0) {
+      return null
+    }
+
+    return this.mapToEntity(result.rows[0])
+  }
+
   async criar(client: ClientProps): Promise<Client> {
     const query = `
       INSERT INTO clientes (
-        id, email, senha_hash, primeiro_nome, ultimo_nome, celular,
+        id, email, senha, primeiro_nome, ultimo_nome, celular,
         endereco, cidade, estado, codigo_postal, vendedor, ativo,
         nomeEmpresarial, cnpj, cpf, celularEmpresarial, enderecoEmpresarial,
         dt_inc, dt_alt
@@ -31,7 +42,7 @@ export class ClientRepository {
     const values = [
       client.id,
       client.email,
-      client.senhaHash,
+      client.senha,
       client.primeiroNome,
       client.ultimoNome,
       client.celular,
@@ -56,7 +67,7 @@ export class ClientRepository {
 
   async atualizar(client: ClientProps): Promise<Client> {
     const query = `
-      UPDATE clients SET
+      UPDATE clientes SET
         primeiro_nome = $2, ultimo_nome = $3, celular = $4, endereco = $5,
         cidade = $6, estado = $7, codigo_postal = $8, vendedor = $9,
         nomeEmpresarial = $10, cnpj = $11, cpf = $12, celularEmpresarial = $13,
@@ -91,7 +102,7 @@ export class ClientRepository {
   private mapToEntity(row: any): Client {
     return Client.create({
       email: row.email,
-      senhaHash: row.senha_hash,
+      senha: row.senha,
       primeiroNome: row.primeiro_nome,
       ultimoNome: row.ultimo_nome,
       celular: row.celular,

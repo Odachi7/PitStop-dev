@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
-interface HomeInitialSectionProps {
-  onViewCatalog: () => void;
-}
+export function HomeInitialSection() {
 
-export function HomeInitialSection({onViewCatalog}: HomeInitialSectionProps) {
+    const handleClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
          <section className="relative bg-[url('/src/assets/PapelParedeHome.jpeg')] bg-cover bg-center h-[460px] min-lg:h-screen">
@@ -14,17 +15,17 @@ export function HomeInitialSection({onViewCatalog}: HomeInitialSectionProps) {
                     Encontre seu próximo veículo
                 </h1>
 
-                <p className="text-center text-lg md:text-xl lg:text-3xl lg:max-w-3xl font-medium text-white select-none">
-                    Encontre Motos e Carros Premiums de vendedores confiáveis!
+                <p className="text-center text-lg w-90 md:w-full md:text-xl lg:text-3xl lg:max-w-3xl font-medium text-white select-none">
+                    Motos e Carros Premiums de vendedores confiáveis!
                 </p>
 
-                <button
-                    onClick={onViewCatalog}
+                <Link to={"/catalogo"}
+                    onClick={handleClick}
                     className="mt-10 lg:mt-12 mb-10 text-white text-lg lg:text-3xl border-1 shadow px-4 py-1 rounded-md font-bold cursor-pointer select-none
                     hover:bg-white hover:text-black duration-300"
                 >
                     Ver Catálogo
-                </button>
+                </Link>
             </div>
         </section>
 

@@ -1,6 +1,6 @@
 -- back/scripts/migrations/002_create_vehicles_table.sql
 CREATE TABLE IF NOT EXISTS veiculos (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id SERIAL PRIMARY KEY, -- ID numérico sequencial
     vendedor_id UUID NOT NULL REFERENCES clientes(id) ON DELETE CASCADE,
     marca VARCHAR(100) NOT NULL,
     modelo VARCHAR(100) NOT NULL,
@@ -23,18 +23,11 @@ CREATE TABLE IF NOT EXISTS veiculos (
     imagem7 VARCHAR(500),
     dt_inc TIMESTAMP DEFAULT NOW(),
     dt_alt TIMESTAMP DEFAULT NOW(),
-    dt_public TIMESTAMP,
-    CONSTRAINT vendedor_do_veiculo_deve_ser_vendedor CHECK (
-        EXISTS (
-            SELECT 1 FROM clientes
-            WHERE clientes.id = veiculos.vendedor_id 
-            AND clientes.vendedor = TRUE
-        )
-    )
+    dt_public TIMESTAMP
 );
 
 -- Índices
-CREATE INDEX idx_veiculos_vendedor_idON veiculos(vendedor_id);
-CREATE INDEX idx_veiculos_marca ON veiculos(marca);
-CREATE INDEX idx_veiculos_valor ON veiculos(valor);
-CREATE INDEX idx_veiculos_status ON veiculos(status);
+CREATE INDEX IF NOT EXISTS idx_veiculos_vendedor_id ON veiculos(vendedor_id);
+CREATE INDEX IF NOT EXISTS idx_veiculos_marca ON veiculos(marca);
+CREATE INDEX IF NOT EXISTS idx_veiculos_valor ON veiculos(valor);
+CREATE INDEX IF NOT EXISTS idx_veiculos_status ON veiculos(status);

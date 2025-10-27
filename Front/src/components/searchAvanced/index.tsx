@@ -57,23 +57,26 @@ export function SearchAvanced({
     };
 
     return (
-        <section className="w-full pt-7 px-4 pb-8 bg-white/85 shadow-md shadow-black/20">
+        <section className="w-full pt-7 px-4 pb-8 bg-white/85 shadow-md shadow-black/10">
             <AnimatePresence>
             <div className="w-full max-w-[1380px] mx-auto flex flex-col items-center justify-center">
-                <div className="relative w-2/3 lg:w-full">
-                    <input 
-                        type="text"
-                        placeholder="Pesquisar Veículos..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 border-1 border-black/30 rounded-lg focus:border-black/70 focus:outline-none" 
-                    />
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60 w-5 h-5" />
-                </div>
+                <div className="w-full flex items-center justify-center gap-2">
+                    <div className="relative w-2/3 lg:w-full">
+                        <input 
+                            type="text"
+                            placeholder="Pesquisar Veículos..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-10 pr-4 py-2 border-1 border-black/30 rounded-lg focus:border-black/70 focus:outline-none" 
+                        />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60 w-5 h-5" />
+                    </div>
 
-                <button className="lg:hidden mt-5 bg-zinc-200 px-4 py-2 rounded-lg border-1 border-zinc-300/40 font-medium cursor-pointer" onClick={() => setIsFiltro(!isFiltro)}>
-                    Filtros
-                </button>
+                    <button className="lg:hidden bg-zinc-200 px-4 py-2 rounded-lg border-1 border-zinc-300/40 font-medium cursor-pointer hover:bg-zinc-300 duration-300" 
+                    onClick={() => setIsFiltro(!isFiltro)}>
+                        Filtros
+                    </button>
+                </div>
 
                 <AnimatePresence initial={false}>
                     {(isFiltro || !isMobile) && (
@@ -93,11 +96,11 @@ export function SearchAvanced({
                                 duration: 0.4,
                                 ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="w-full flex max-md:flex-col items-center justify-center mt-4 gap-4">
-                            <div className="w-full relative">
+                            className="w-full flex max-md:flex-col items-center justify-center mt-5 gap-3">
+                            <div className="w-full relative hover:shadow-md hover:shadow-black/10 transition-shadow">
                                 <Button
                                     size={"lg"}
-                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-lg"
+                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-md"
                                     onClick={() => toggleMenu("categoria")}
                                 >
                                     <p className="block px-3 py-2 text-black">
@@ -144,7 +147,7 @@ export function SearchAvanced({
                                                 Todas Categorias
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Carro" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Carro" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
                                                     setSelectedCategory("Carro");
                                                     setIsCategoria(false);
@@ -153,7 +156,7 @@ export function SearchAvanced({
                                                 Carros
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Moto" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedCategory === "Moto" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
                                                     setSelectedCategory("Moto");
                                                     setIsCategoria(false);
@@ -167,10 +170,10 @@ export function SearchAvanced({
                                 </AnimatePresence>
                             </div>
 
-                            <div className="w-full relative">
+                            <div className="w-full relative hover:shadow-md hover:shadow-black/10 transition-shadow">
                                 <Button
                                     size={"lg"}
-                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-lg"
+                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-md"
                                     onClick={() => toggleMenu("marcas")}
                                 >
                                     <p className="block px-3 py-2 text-black">
@@ -218,7 +221,7 @@ export function SearchAvanced({
                                             {["Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Mercedes", "Audi", "Volkswagen"].map((brand) => (
                                                 <li
                                                     key={brand}
-                                                    className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedBrand === brand ? "bg-zinc-200" : ""}`}
+                                                    className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${selectedBrand === brand ? "bg-zinc-200" : ""}`}
                                                     onClick={() => {
                                                         setSelectedBrand(brand);
                                                         setIsmarcas(false);
@@ -233,10 +236,10 @@ export function SearchAvanced({
                                 </AnimatePresence>
                             </div>
 
-                            <div className="w-full relative">
+                            <div className="w-full relative hover:shadow-md hover:shadow-black/10 transition-shadow">
                                 <Button
                                     size={"lg"}
-                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-lg"
+                                    className="w-full flex items-center justify-between px-2 py-1 cursor-pointer border-1 border-black/20 rounded-md"
                                     onClick={() => toggleMenu("precos")}
                                 >
                                     <p className="block px-3 py-2 text-black">
@@ -284,7 +287,7 @@ export function SearchAvanced({
                                                 Todos Preços
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Menos de 20k" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Menos de 20k" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
                                                     setPriceRange("Menos de 20k");
                                                     setIsprecos(false);
@@ -293,7 +296,7 @@ export function SearchAvanced({
                                                 Abaixo de $20k
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "20k-40k" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "20k-40k" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
                                                     setPriceRange("20k-40k");
                                                     setIsprecos(false);
@@ -302,7 +305,7 @@ export function SearchAvanced({
                                                 $20k - $40k
                                             </li>
                                             <li
-                                                className={`py-2 px-5 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Mais de 40k" ? "bg-zinc-200" : ""}`}
+                                                className={`py-2 px-5 mt-2 hover:bg-zinc-200 cursor-pointer rounded-lg text-black/90 ${priceRange === "Mais de 40k" ? "bg-zinc-200" : ""}`}
                                                 onClick={() => {
                                                     setPriceRange("Mais de 40k");
                                                     setIsprecos(false);
@@ -318,7 +321,7 @@ export function SearchAvanced({
 
                             <Button 
                                 size={"lg"} 
-                                className="w-full flex items-center justify-center py-2.5 cursor-pointer border-1 border-black/20 rounded-lg"
+                                className="w-full flex items-center justify-center py-2.5 cursor-pointer border-1 border-black/20 rounded-lg hover:shadow-md hover:shadow-black/10 transition-shadow"
                                 onClick={resetFilters}
                             >
                                 Limpar Filtros

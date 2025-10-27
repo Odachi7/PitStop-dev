@@ -55,14 +55,20 @@ export function Catalogo() {
     }
     
     return veiculos.filter((vehicle) => {
-      const matchesSearch = vehicle.title.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === "all" || vehicle.category === selectedCategory;
-      const matchesBrand = selectedBrand === "all" || vehicle.brand === selectedBrand;
+      // Verificações de segurança para evitar erros de undefined
+      const title = vehicle.title || '';
+      const category = vehicle.category || '';
+      const brand = vehicle.brand || '';
+      const price = vehicle.price || 0;
+
+      const matchesSearch = title.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === "all" || category === selectedCategory;
+      const matchesBrand = selectedBrand === "all" || brand === selectedBrand;
       const matchesPrice =
         priceRange === "all" ||
-        (priceRange === "Menos de 20k" && vehicle.price < 20000) ||
-        (priceRange === "20k-40k" && vehicle.price >= 20000 && vehicle.price <= 40000) ||
-        (priceRange === "Mais de 40k" && vehicle.price > 40000);
+        (priceRange === "Menos de 20k" && price < 20000) ||
+        (priceRange === "20k-40k" && price >= 20000 && price <= 40000) ||
+        (priceRange === "Mais de 40k" && price > 40000);
 
       return matchesSearch && matchesCategory && matchesBrand && matchesPrice;
     });
@@ -127,20 +133,25 @@ export function Catalogo() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 cursor-pointer">
             {paginatedData.items.map((vehicle: Vehicle) => (
-              <Card key={vehicle.id} className="group hover:shadow-lg transition-shadow duration-300">
-                <div className="relative">
+              <Card
+                key={vehicle.id}
+                className="group hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              >
+                <Link to={`/vehicle/${vehicle.id}`} className="relative">
                   <img
                     src={vehicle.image || "/placeholder.svg"}
                     alt={vehicle.title}
                     loading="lazy"
-                    className="w-full h-50 object-cover rounded-t-lg"
+                    className="w-full h-65 object-cover rounded-t-lg"
                   />
-                </div>
+                </Link>
 
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">
-                    {vehicle.title}
-                  </h3>
+                <CardContent className="p-4 flex flex-col flex-1">
+                  <Link to={`/vehicle/${vehicle.id}`}>
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {vehicle.title}
+                    </h3>
+                  </Link>
 
                   <p className="text-2xl font-bold text-blue-900 mb-2">
                     {formatarReal(vehicle.price)}
@@ -150,17 +161,16 @@ export function Catalogo() {
                     <p>
                       {formatKilometers(Number(vehicle.mileage))} km • {vehicle.transmission} • {vehicle.fuel}
                     </p>
-
-                    <p className="text-gray-500">
-                      {vehicle.location}
-                    </p>
+                    <p className="text-gray-500">{vehicle.location}</p>
                   </div>
 
-                  <Link to={`/vehicle/${vehicle.id}`}>
-                    <Button className="w-full text-white bg-blue-900 cursor-pointer group-hover:bg-blue-800">
-                      Ver detalhes
-                    </Button>
-                  </Link>
+                  <div className="mt-auto">
+                    <Link to={`/vehicle/${vehicle.id}`}>
+                      <Button className="w-full text-white bg-blue-900 cursor-pointer group-hover:bg-blue-800">
+                        Ver detalhes
+                      </Button>
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
             ))}

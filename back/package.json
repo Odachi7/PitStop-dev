@@ -8,7 +8,11 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "jest",
-    "migrate": "tsx scripts/migrations/run.ts"
+    "migrate": "tsx scripts/run-migrations.ts",
+    "setup-db": "tsx scripts/setup-database.ts",
+    "setup-system": "tsx scripts/setup-system.ts",
+    "create-super-admin": "tsx scripts/create-super-admin.ts",
+    "run-migrations": "tsx scripts/run-all-migrations.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

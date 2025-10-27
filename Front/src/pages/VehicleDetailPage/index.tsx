@@ -40,12 +40,14 @@ type Vehicle = {
     id: number
     title: string
     price: number
-    image: string
     image1?: string  
     image2?: string  
     image3?: string  
     image4?: string  
-    image5?: string  
+    image5?: string 
+    image6?: string  
+    image7?: string  
+    image8?: string   
     mileage: string
     transmission: string
     fuel: string
@@ -77,13 +79,15 @@ export function VehicleDetailPage() {
   const [viewCount, setViewCount] = useState(0)
   const [vehicles, setVehicles] = useState<Vehicle[]>([])
 
-  const { veiculos, suggestedVehicles } = useContext(Usercontext)
+  const { veiculos, suggestedVehicles, formatarReal } = useContext(Usercontext)
   
   useEffect(() => {
     if (veiculos) {
       setVehicles(veiculos)
     }
   }, [veiculos])
+
+  console.log(veiculos)
 
   const vehicle = vehicles.find((v) => v.id === Number.parseInt(id || "0"))
 
@@ -93,7 +97,10 @@ export function VehicleDetailPage() {
       vehicle.image2,
       vehicle.image3,
       vehicle.image4,
-      vehicle.image5
+      vehicle.image5, 
+      vehicle.image6,
+      vehicle.image7,
+      vehicle.image8
     ].filter(Boolean) as string[] 
     
     return images
@@ -123,9 +130,9 @@ export function VehicleDetailPage() {
             </div>
             
             <Link to="/">
-              <Button className="border-2 border-blue-900/65 px-4 py-2 rounded-xl font-medium text-blue-900 hover:bg-blue-900/85
+              <Button className="group border-2 border-blue-900/65 px-4 py-2 rounded-xl font-medium text-blue-900 hover:bg-blue-900/85
                 hover:text-white duration-300 cursor-pointer">
-                <ArrowLeft className="h-4 w-4 mr-2 text-blue-900 hover:text-white" />
+                <ArrowLeft className="h-4 w-4 mr-2 text-blue-900 group-hover:text-white duration-300" />
                 Página Inicial
               </Button>
             </Link>
@@ -161,6 +168,8 @@ export function VehicleDetailPage() {
     }
   }
 
+  console.log(vehicleImages)
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-6">
@@ -168,26 +177,31 @@ export function VehicleDetailPage() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* Header */}
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">{vehicle.title}</h1>
-                <Badge variant={vehicle.category === "Carro" ? "default" : "secondary"} className="text-sm">
-                  {vehicle.category === "Carro" ? <Car className="h-4 w-4 mr-1" /> : <i className="ri-e-bike-line text-2xl"></i>}
-                  {vehicle.category === "Carro" ? "Carro" : "Moto"}
-                </Badge>
+              <div className="flex flex-col gap-3 mb-2">
+                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                  {vehicle.title}
+                </h1>
+
+                <div className="w-full flex items-center">
+                  <Badge variant={vehicle.category === "Carro" ? "default" : "secondary"} className="text-gray-600 text-sm font-medium -mb-1 p-0 md:text-lg">
+                    {vehicle.category === "Carro" ? <Car className="h-4 w-4 mr-1" /> : <i className="ri-e-bike-line text-2xl"></i>}
+                    {vehicle.category === "Carro" ? "Carro" : "Moto"}
+                  </Badge>
+                </div>
               </div>
 
               <div className="flex items-center gap-4 text-gray-600">
-                <div className="flex items-center">
+                <div className="flex items-center text-sm">
                   <MapPin className="h-4 w-4 mr-1" />
                   {vehicle.location}
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center text-sm">
                   <Eye className="h-4 w-4 mr-1" />
                   {viewCount} visualizações
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center text-sm">
                   <Clock className="h-4 w-4 mr-1" />
                   Listado há 3 dias
                 </div>
@@ -196,7 +210,7 @@ export function VehicleDetailPage() {
 
             <div className="text-right">
               <div className="text-4xl font-bold text-blue-900 mb-2">
-                ${vehicle.price.toLocaleString()}
+                {formatarReal(vehicle.price)}
               </div>
 
               <div className="flex items-center gap-2">
@@ -204,13 +218,13 @@ export function VehicleDetailPage() {
                   size="sm"
                   variant="outline"
                   onClick={() => setIsLiked(!isLiked)}
-                  className={`${isLiked ? "bg-red-50 border-red-200 text-red-600" : "bg-white"} cursor-pointer`}
+                  className={`${isLiked ? "bg-red-50 border-red-200 text-red-600" : "bg-white"} cursor-pointer hover:shadow-xl hover:shadow-red-500/15 transition-shadow`}
                 >
                   <Heart className={`h-4 w-4 mr-1 ${isLiked ? "fill-current" : ""}`} />
                   {isLiked ? "Saved" : "Save"}
                 </Button>
 
-                <Button size="sm" variant="outline" onClick={handleShare} className="bg-white cursor-pointer">
+                <Button size="sm" variant="outline" onClick={handleShare} className="bg-white cursor-pointer hover:shadow-xl hover:shadow-black/15 transition-shadow">
                   <Share2 className="h-4 w-4 mr-1" />
                   Compartilhar
                 </Button>
@@ -227,7 +241,7 @@ export function VehicleDetailPage() {
               <CardContent className="p-0">
                 <div className="relative">
                   <img
-                    src={vehicleImages.length > 0 ? vehicleImages[currentImageIndex] : vehicle.image || "/placeholder.svg"}
+                    src={vehicleImages.length > 0 ? vehicleImages[currentImageIndex] : vehicle.image1 || "/placeholder.svg"}
                     alt={vehicle.title}
                     className="w-full h-96 lg:h-[500px] object-cover"
                   />
@@ -872,7 +886,7 @@ export function VehicleDetailPage() {
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
                     <img
-                      src={suggestedVehicle.image || "/placeholder.svg"}
+                      src={suggestedVehicle.image1 || "/placeholder.svg"}
                       alt={suggestedVehicle.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />

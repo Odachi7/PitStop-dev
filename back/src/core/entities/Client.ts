@@ -3,7 +3,7 @@ import { Entity } from './base/Entity';
 export interface ClientProps {
   id?: string;
   email: string;
-  senhaHash: string;
+  senha: string; // Senha em texto plano
   primeiroNome: string;
   ultimoNome: string;
   celular?: string;
@@ -53,8 +53,8 @@ export class Client extends Entity<ClientProps> {
     get email(): string { 
       return this.props.email; 
     }
-    get senhaHash(): string { 
-      return this.props.senhaHash; 
+    get senha(): string { 
+      return this.props.senha; 
     }
     get primeiroNome(): string { 
       return this.props.primeiroNome; 

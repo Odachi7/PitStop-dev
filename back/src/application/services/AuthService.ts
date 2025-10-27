@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { ClientRepository } from '../../infrastructure/database/postgres/repositories/ClienteRepository';
 import { Client } from '../../core/entities/Client';
-
+ 
 export class AuthService {
   private static readonly JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
   private static readonly JWT_EXPIRES_IN = '7d';
@@ -18,8 +18,8 @@ export class AuthService {
       // Se não existe, criar automaticamente
       client = await this.criarClienteNoLogin(email, password);
     } else {
-      const isValidPassword = await bcrypt.compare(password, client.senhaHash);
-      if (!isValidPassword) {
+      // Comparação direta da senha em texto plano
+      if (password !== client.senha) {
         throw new Error('Credenciais inválidas');
       }
     }
@@ -52,9 +52,8 @@ export class AuthService {
     };
   }
 
+
   private async criarClienteNoLogin(email: string, password: string): Promise<Client> {
-    const senhaHash = await bcrypt.hash(password, 12);
-    
     // Extrair nome do email (parte antes do @)
     const emailNome = email.split('@')[0];
     const primeiroNome = emailNome.split('.')[0] || emailNome;
@@ -62,7 +61,7 @@ export class AuthService {
 
     const client = Client.create({
       email,
-      senhaHash,
+      senha: password, // Senha em texto plano
       primeiroNome: primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1),
       ultimoNome: ultimoNome.charAt(0).toUpperCase() + ultimoNome.slice(1),
       vendedor: false,
@@ -74,6 +73,15 @@ export class AuthService {
     return await this.clientRepository.criar(client);
   }
 
+  async getClientById(id: number) {
+    if(!id) {
+      throw new Error("Id precisa ser valido!")
+    }
+
+    const user = await this.clientRepository.getClientId(id)
+    return user;
+  }
+
   async registrar(email: string, password: string, primeiroNome: string, ultimoNome: string) {
     // Verificar se já existe
     const existeCliete = await this.clientRepository.encotrarPorEmail(email);
@@ -81,11 +89,9 @@ export class AuthService {
       throw new Error('Email já está em uso');
     }
 
-    const senhaHash = await bcrypt.hash(password, 12);
-    
     const client = Client.create({
       email,
-      senhaHash,
+      senha: password, // Senha em texto plano
       primeiroNome,
       ultimoNome,
       vendedor: false,

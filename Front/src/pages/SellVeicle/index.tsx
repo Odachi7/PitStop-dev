@@ -1,7 +1,7 @@
 
 
 
-export function SellCar() {
+export function SellVeicle() {
     return(
         <div>
             <h1>

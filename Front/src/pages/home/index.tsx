@@ -31,7 +31,6 @@ export function Home() {
   const { 
     veiculos, 
     loading, 
-    error, 
     formatarReal, 
     formatKilometers,
     currentPage,
@@ -89,12 +88,7 @@ export function Home() {
   };
 
   if (loading) return <p className="text-center py-12">Carregando veículos...</p>;
-  if (error) return (
-    <div className="text-center py-12">
-      <p className="text-red-500 mb-4">Erro ao carregar veículos: {error}</p>
-      <p className="text-gray-500">Verifique se o servidor está rodando em http://localhost:3333</p>
-    </div>
-  );
+
   if (!Array.isArray(veiculos) || veiculos.length === 0) return (
     <div className="text-center py-12">
       <p className="text-gray-500 text-lg">Nenhum veículo encontrado.</p>
@@ -103,18 +97,16 @@ export function Home() {
   );
 
   // Função para scroll até os filtros
-  const scrollToFilters = () => {
-    filtersRef.current?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
+  // const scrollToFilters = () => {
+  //   filtersRef.current?.scrollIntoView({ 
+  //     behavior: 'smooth',
+  //     block: 'start'
+  //   });
+  // };
 
   return (
     <section className="w-full">
-      <HomeInitialSection 
-        onViewCatalog={scrollToFilters}
-      />
+      <HomeInitialSection />
 
       <div ref={filtersRef}>
         <SearchAvanced
@@ -142,20 +134,25 @@ export function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 cursor-pointer">
             {paginatedData.items.map((vehicle: Vehicle) => (
-              <Card key={vehicle.id} className="group hover:shadow-lg transition-shadow duration-300">
-                <div className="relative">
+              <Card
+                key={vehicle.id}
+                className="group hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              >
+                <Link to={`/vehicle/${vehicle.id}`} className="relative">
                   <img
                     src={vehicle.image || "/placeholder.svg"}
                     alt={vehicle.title}
                     loading="lazy"
-                    className="w-full h-50 object-cover rounded-t-lg"
+                    className="w-full h-65 object-cover rounded-t-lg"
                   />
-                </div>
+                </Link>
 
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">
-                    {vehicle.title}
-                  </h3>
+                <CardContent className="p-4 flex flex-col flex-1">
+                  <Link to={`/vehicle/${vehicle.id}`}>
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {vehicle.title}
+                    </h3>
+                  </Link>
 
                   <p className="text-2xl font-bold text-blue-900 mb-2">
                     {formatarReal(vehicle.price)}
@@ -165,17 +162,16 @@ export function Home() {
                     <p>
                       {formatKilometers(Number(vehicle.mileage))} km • {vehicle.transmission} • {vehicle.fuel}
                     </p>
-
-                    <p className="text-gray-500">
-                      {vehicle.location}
-                    </p>
+                    <p className="text-gray-500">{vehicle.location}</p>
                   </div>
 
-                  <Link to={`/vehicle/${vehicle.id}`}>
-                    <Button className="w-full text-white bg-blue-900 cursor-pointer group-hover:bg-blue-800">
-                      Ver detalhes
-                    </Button>
-                  </Link>
+                  <div className="mt-auto">
+                    <Link to={`/vehicle/${vehicle.id}`}>
+                      <Button className="w-full text-white bg-blue-900 cursor-pointer group-hover:bg-blue-800">
+                        Ver detalhes
+                      </Button>
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
             ))}

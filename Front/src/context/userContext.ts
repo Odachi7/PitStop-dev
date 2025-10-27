@@ -18,12 +18,14 @@ type Vehicle = {
   id: number
   title: string
   price: number
-  image: string
-  image1?: string  
-  image2?: string  
-  image3?: string  
-  image4?: string  
-  image5?: string  
+  image1?: string,
+  image2?: string,
+  image3?: string,
+  image4?: string,
+  image5?: string,
+  image6?: string,
+  image7?: string,
+  image8?: string,
   mileage: string
   transmission: string
   fuel: string
@@ -68,6 +70,7 @@ type UserContextData = {
   setCurrentPage: (page: number) => void; // tipagem mais específica
   itemsPerPage: number;
   getPaginatedData: <T>(data: T[], page: number, itemsPerPage: number) => PaginationData; // retorno mais específico
+  reloadVehicles: () => Promise<void>; // função para recarregar veículos
 };
 
 export const Usercontext = createContext({} as UserContextData);
