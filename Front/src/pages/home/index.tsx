@@ -18,7 +18,7 @@ type Vehicle = {
   transmission?: string;
   fuel?: string;
   location?: string;
-  image?: string;
+  image1?: string;
 };
 
 export function Home() {
@@ -140,7 +140,7 @@ export function Home() {
               >
                 <Link to={`/vehicle/${vehicle.id}`} className="relative">
                   <img
-                    src={vehicle.image || "/placeholder.svg"}
+                    src={vehicle.image1 || "/placeholder.svg"}
                     alt={vehicle.title}
                     loading="lazy"
                     className="w-full h-65 object-cover rounded-t-lg"

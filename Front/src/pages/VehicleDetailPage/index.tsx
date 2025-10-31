@@ -191,17 +191,17 @@ export function VehicleDetailPage() {
               </div>
 
               <div className="flex items-center gap-4 text-gray-600">
-                <div className="flex items-center text-sm">
+                <div className="w-full flex items-center text-[12px]">
                   <MapPin className="h-4 w-4 mr-1" />
                   {vehicle.location}
                 </div>
 
-                <div className="flex items-center text-sm">
+                <div className="w-full flex items-center text-[12px]">
                   <Eye className="h-4 w-4 mr-1" />
                   {viewCount} visualizações
                 </div>
 
-                <div className="flex items-center text-sm">
+                <div className="w-full flex items-center text-[12px]">
                   <Clock className="h-4 w-4 mr-1" />
                   Listado há 3 dias
                 </div>
